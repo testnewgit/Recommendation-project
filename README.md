@@ -1,211 +1,206 @@
-# i95dev AI Engineering Intern - Take-Home Assignment
-## AI-Powered Product Recommendation Engine
+# 🏍️ AI-Powered Product Recommendation System
 
-### Overview
+This is a full-stack **AI-powered product recommendation engine** built for an eCommerce scenario. It uses **Google Gemini** to generate **personalized product suggestions** based on user preferences and browsing behavior.
 
-Welcome to the i95dev AI Engineering Intern take-home assignment! This project is designed to evaluate your skills in working with LLMs, prompt engineering, and full-stack development in an eCommerce context.
+---
 
-Your task is to build a simplified product recommendation system that leverages LLMs to generate personalized recommendations based on user preferences and browsing history. This system should demonstrate your ability to effectively engineer prompts, build APIs, and create a functional frontend interface.
+## 📖 What I Did in This Project
 
-### Project Requirements
+This project involved end-to-end development of an AI-powered recommendation engine. Here’s a high-level summary of what I implemented and solved:
 
-#### Backend (Python)
-- Develop a REST API using Flask that interfaces with an LLM (OpenAI GPT-3.5-turbo or similar)
-- Implement prompt engineering to optimize product recommendations based on user preferences
-- Create endpoints for:
-  - Accepting user preference data
-  - Processing browsing history
-  - Returning personalized product recommendations with explanations
+### ✅ Backend (FastAPI + Gemini)
 
-#### Frontend (React)
-- Build a clean interface showing the product catalog
-- Implement a user preference form to capture interests (e.g., preferences for categories, price ranges, styles)
-- Create a browsing history simulation (users can click on products to add them to history)
-- Display personalized recommendations with reasoning from the LLM
+* Set up FastAPI server with clean API architecture.
+* Integrated **Google Gemini** API for generating smart recommendations.
+* Engineered prompts for accurate, JSON-structured outputs.
+* Added environment configurations like:
 
-### Starter Kit
+  * `MODEL_NAME=gemini-2.0-flash`
+  * `MAX_TOKENS=1024`
+  * `TEMPERATURE=0.7`
+  * `DATA_PATH=data/products.json`
+* Configured CORS to allow frontend access.
 
-We've provided a starter kit to help you focus on the core technical challenges rather than boilerplate setup. The kit includes:
+### ✅ Frontend (React.js)
 
-#### Backend Structure
+* Built modular React components (`Catalog`, `UserPreferences`, `Recommendations`, `BrowsingHistory`).
+* Implemented dynamic **filtering and sorting** (by price/rating, asc/desc).
+* Designed UI using **CSS Grid** and **Flexbox**.
+
+Screnshots of frontend
+![msedge_4DIfcQgvKB](https://github.com/user-attachments/assets/2a820a40-14b3-4694-b636-01296395b079)
+
+
+![msedge_7uLY6RN0Qp](https://github.com/user-attachments/assets/bd840da9-cd79-4da1-aba0-7c1ed228b117)
+
+
+### ✅ Issues Faced and Solved
+
+* **OpenAI API quota exceeded** — Switched to **Google Gemini**.
+* **Missing Python packages** — Installed `google-generativeai` and `python-dotenv`.
+* **React crash due to missing `react-scripts`** — Fixed using `npm install`.
+* **CORS policy errors** — Solved by enabling FastAPI `CORSMiddleware`.
+* **Gemini returning malformed JSON** — Refined prompts and parsed manually.
+* **Backend/Frontend connection issues** — Matched ports, confirmed `localhost:8000`.
+
+---
+
+
+
+---
+
+## 🧰 Tech Stack
+
+| Layer      | Tools              |
+| ---------- | ------------------ |
+| LLM API    | Google Gemini      |
+| Backend    | FastAPI, Python    |
+| Frontend   | React.js           |
+| Styling    | CSS Grid & Flexbox |
+| Deployment | Run locally        |
+
+---
+
+## 🚀 Getting Started
+
+### 📁 Clone the Repo
+
+```bash
+git clone https://github.com/YOUR_USERNAME/recommendation-system.git
+cd recommendation-system
 ```
-backend/
-│
-├── app.py               # Main Flask application
-├── requirements.txt     # Python dependencies
-├── config.py            # Configuration (add your API keys here)
-├── data/
-│   └── products.json    # Sample product catalog
-│
-├── services/
-│   ├── __init__.py
-│   ├── llm_service.py   # Service for LLM interactions (implement this)
-│   └── product_service.py  # Service for product data operations
-│
-└── README.md            # Backend setup instructions
+
+---
+
+### ⚙️ Backend Setup (FastAPI)
+
+📍 Navigate to the backend folder:
+
+```bash
+cd backend
 ```
 
-#### Frontend Structure
-```
-frontend/
-│
-├── public/
-│   └── index.html
-│
-├── src/
-│   ├── App.js           # Main application component
-│   ├── index.js         # Entry point
-│   ├── components/
-│   │   ├── Catalog.js   # Product catalog display (implement this)
-│   │   ├── UserPreferences.js  # Preference form (implement this)
-│   │   ├── Recommendations.js  # Recommendations display (implement this)
-│   │   └── BrowsingHistory.js  # Browsing history component (implement this)
-│   │
-│   ├── services/
-│   │   └── api.js       # API client for backend communication
-│   │
-│   └── styles/
-│       └── App.css      # Styling
-│
-├── package.json         # NPM dependencies
-└── README.md            # Frontend setup instructions
+📦 Create & activate virtual environment:
+
+```bash
+python -m venv venv
+source venv/bin/activate   # or venv\Scripts\activate on Windows
 ```
 
-### Sample Dataset
+📅 Install dependencies:
 
-We've provided a sample product catalog (`products.json`) that contains 50 products across various categories. Each product has the following structure:
+```bash
+pip install -r requirements.txt
+```
 
-```json
-{
-  "id": "product123",
-  "name": "Ultra-Comfort Running Shoes",
-  "category": "Footwear",
-  "subcategory": "Running",
-  "price": 89.99,
-  "brand": "SportsFlex",
-  "description": "Lightweight running shoes with responsive cushioning and breathable mesh upper.",
-  "features": ["Responsive cushioning", "Breathable mesh", "Durable outsole"],
-  "rating": 4.7,
-  "inventory": 45,
-  "tags": ["running", "athletic", "comfortable", "lightweight"]
+🔑 Add your **Gemini API Key**
+
+Create a `.env` file or edit `config.py`:
+
+```python
+config = {
+    "GEMINI_API_KEY": "your-gemini-key",
+    "MODEL_NAME": "gemini-2.0-flash",
+    "MAX_TOKENS": 1024,
+    "TEMPERATURE": 0.7,
+    "DATA_PATH": "data/products.json"
 }
 ```
 
-The dataset includes products from categories such as:
-- Electronics (smartphones, laptops, headphones, etc.)
-- Clothing (shirts, pants, dresses, etc.)
-- Home goods (furniture, kitchenware, decor, etc.)
-- Beauty & Personal Care (skincare, makeup, fragrances, etc.)
-- Sports & Outdoors (equipment, apparel, accessories, etc.)
+▶️ Start the backend server:
 
-### Key Implementation Guidelines
+```bash
+uvicorn app:app --reload --port 8000
+```
 
-#### LLM Integration
-- You should use OpenAI's API (GPT-3.5-turbo is sufficient) or another LLM API of your choice
-- Implement proper error handling for API calls
-- Use appropriate context windows and token limits
+✅ Your backend will run on: `http://localhost:8000/api`
 
-#### Prompt Engineering
-- Design prompts that effectively leverage product metadata and user preferences
-- Ensure your prompts provide reasoning for recommendations
-- Consider how to handle context limitations for larger product catalogs
+---
 
-#### API Design
-- Create RESTful endpoints with proper request/response formats
-- Implement appropriate error handling
-- Consider performance and optimization
+### 💻 Frontend Setup (React)
 
-#### React Frontend
-- Focus on clean, functional UI rather than elaborate designs
-- Implement responsive components that adapt to different screen sizes
-- Use React state management appropriately (useState, useContext, etc.)
+📍 Navigate to the frontend folder:
 
-### Stretch Goals (Optional)
+```bash
+cd ../frontend
+```
 
-If you complete the core requirements and want to demonstrate additional skills, consider implementing one or more of these stretch goals:
+📅 Install frontend dependencies:
 
-1. Add user authentication and profile persistence
-2. Implement caching for LLM responses to improve performance
-3. Add filtering and sorting options to the product catalog
-4. Create A/B testing for different prompt strategies
-5. Add unit and/or integration tests
+```bash
+npm install
+```
 
-### Evaluation Criteria
+▶️ Run the app:
 
-Your submission will be evaluated based on:
+```bash
+npm start
+```
 
-1. **Prompt Engineering Quality (30%)**
-   - Effectiveness of prompts in generating relevant recommendations
-   - Context handling and optimization
-   - Clarity and usefulness of recommendation explanations
+✅ Frontend will open at: `http://localhost:3000`
 
-2. **API Design and Implementation (25%)**
-   - RESTful API design and implementation
-   - Error handling and edge cases
-   - Code organization and structure
+---
 
-3. **Frontend Implementation (25%)**
-   - Component architecture and organization
-   - User experience and interface design
-   - State management and data flow
+## 🧪 How It Works
 
-4. **Code Quality (20%)**
-   - Code readability and documentation
-   - Proper use of version control (commit messages, organization)
-   - Error handling and edge cases
+1. Choose your **price range**, **categories**, and **brands**
+2. Click on any product to **simulate browsing**
+3. Click **"Get Personalized Recommendations"**
+4. **Gemini API** returns **5 intelligent suggestions** with explanations and confidence scores
 
-### Submission Guidelines
+---
 
-1. **GitHub Repository**
-   - Create a **public** GitHub repository with your implementation
-   - Ensure your repository includes:
-     - Complete source code for both frontend and backend
-     - A comprehensive README with setup instructions
-     - Documentation of your approach, especially for prompt engineering
+## 📂 Project Structure
 
-2. **Deployment (Optional)**
-   - If possible, deploy your application (e.g., Vercel, Netlify, Heroku)
-   - Include the deployed URL in your README
+```
+recommendation-system/
+├── backend/
+│   ├── app.py
+│   ├── config.py
+│   ├── requirements.txt
+│   ├── services/
+│   │   ├── llm_service.py
+│   │   └── product_service.py
+│   └── data/
+│       └── products.json
+│
+├── frontend/
+│   ├── src/
+      ├── components/
+      ├── services/
+      ├── App.js
+      └── styles/
 
-3. **Submission Timeline**
-   - Complete the assignment within 7 days of receiving it
-   - Submit by **replying to the original assessment email** with:
-     - GitHub repository link
-     - Brief overview of your approach (1-2 paragraphs)
-     - Any challenges you faced and how you overcame them
-     - Time spent on the assignment
+```
 
-### Setup Instructions
+---
 
-#### Backend Setup
-1. Navigate to the `backend` directory
-2. Create a virtual environment: `python -m venv venv`
-3. Activate the virtual environment:
-   - Windows: `venv\Scripts\activate`
-   - macOS/Linux: `source venv/bin/activate`
-4. Install dependencies: `pip install -r requirements.txt`
-5. Create a `.env` file based on `.env.example` and add your LLM API key
-6. Run the application: `python app.py`
+## ✅ Key Implementation Highlights
 
-#### Frontend Setup
-1. Navigate to the `frontend` directory
-2. Install dependencies: `npm install`
-3. Start the development server: `npm start`
-4. The application should open at `http://localhost:3000`
+* Uses **Google Gemini** for contextual reasoning and smart recommendations
+* Efficient **prompt engineering** with price/category filtering
+* Clean RESTful API with request/response validation
+* Responsive UI with component-based architecture
+* Graceful error handling and dev-friendly logging
+* 💡 **Newly added sorting and filtering for product catalog (Frontend)**
 
-### Notes and Tips
+---
 
-- **API Keys**: Never commit your API keys to GitHub. Use environment variables.
-- **Time Management**: Focus on core functionality first, then enhance if time permits.
-- **Documentation**: Document your approach, especially your prompt engineering strategy.
-- **Code Quality**: Clean, well-organized code is more important than feature quantity.
-- **Questions**: If you have questions, email recruiting@i95dev.com with "Question: AI Intern Take-Home" as the subject.
 
-### Resources
+---
 
-- [OpenAI API Documentation](https://platform.openai.com/docs/api-reference)
-- [Flask Documentation](https://flask.palletsprojects.com/)
-- [React Documentation](https://reactjs.org/docs/getting-started.html)
-- [Prompt Engineering Guide](https://www.promptingguide.ai/)
+## 🌟 Stretch Goals Implemented
 
-We're excited to see your implementation and approach! Good luck!
+✅ Login using **JWT token-based authentication**
+✅ Modular LLM integration for flexibility
+
+---
+
+Checking of api working properly using postman
+![Postman_9fQ2Ci1OmB](https://github.com/user-attachments/assets/99d437bb-2fae-4695-8166-b177dbc77ff1)
+
+
+
+
+
+

@@ -16,7 +16,7 @@ This project involved end-to-end development of an AI-powered recommendation eng
 * Added environment configurations like:
 
   * `MODEL_NAME=gemini-2.0-flash`
-  * `MAX_TOKENS=1024`
+  * `MAX_TOKENS=1000`
   * `TEMPERATURE=0.7`
   * `DATA_PATH=data/products.json`
 

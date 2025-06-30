@@ -98,7 +98,7 @@ Create a `.env` file or edit `config.py`:
 config = {
     "GEMINI_API_KEY": "your-gemini-key",
     "MODEL_NAME": "gemini-2.0-flash",
-    "MAX_TOKENS": 1024,
+    "MAX_TOKENS": 1000,
     "TEMPERATURE": 0.7,
     "DATA_PATH": "data/products.json"
 }
@@ -116,7 +116,7 @@ uvicorn app:app --reload --port 8000
 
 ### 💻 Frontend Setup (React)
 
-📍 Navigate to the frontend folder:
+ Navigate to the frontend folder:
 
 ```bash
 cd ../frontend

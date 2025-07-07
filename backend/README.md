@@ -114,7 +114,6 @@ Generates personalized product recommendations based on user preferences and bro
       "explanation": "Based on your interest in audio devices and the SoundWave brand...",
       "confidence_score": 8
     },
-    ...
   ],
   "count": 5
 }

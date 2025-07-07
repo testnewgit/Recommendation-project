@@ -74,7 +74,7 @@ Returns the full product catalog.
     "inventory": 45,
     "tags": ["..."]
   },
-  ...
+  
 ]
 ```
 

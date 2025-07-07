@@ -85,11 +85,11 @@ Generates personalized product recommendations based on user preferences and bro
 ```json
 {
   "preferences": {
-    "priceRange": "all", # Options: "0-50", "50-100", "100+", "all"
-    "categories": ["Electronics", "Home"], # Array of category names
-    "brands": ["SoundWave", "FitTech"] # Array of brand names
+    "priceRange": "all", 
+    "categories": ["Electronics", "Home"], 
+    "brands": ["SoundWave", "FitTech"] 
   },
-  "browsing_history": ["prod002", "prod007"] # Array of product IDs
+  "browsing_history": ["prod002", "prod007"] 
 }
 ```
 

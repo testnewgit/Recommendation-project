@@ -1,6 +1,6 @@
 # AI-Powered Product Recommendation Engine - Backend
 
-This is the backend component of the AI-Powered Product Recommendation Engine take-home assignment. It provides a FastAPI API that interfaces with an LLM to generate personalized product recommendations based on user preferences and browsing history.
+This is the backend component of the AI-Powered Product Recommendation Engine. It provides a FastAPI API that interfaces with an LLM to generate personalized product recommendations based on user preferences and browsing history.
 
 ## Project Structure
 
@@ -120,64 +120,6 @@ Generates personalized product recommendations based on user preferences and bro
 }
 ```
 
-## Implementation Tasks
 
-As part of this assignment, you need to implement the following components:
 
-### 1. LLM Service (services/llm_service.py)
 
-The LLM service is responsible for generating personalized product recommendations. You need to implement:
-
-- **`_create_recommendation_prompt`**: Design an effective prompt for the LLM that:
-  - Incorporates user preferences (categories, price range, brands)
-  - Leverages browsing history to understand user interests
-  - Provides context about the available products
-  - Specifies the expected response format
-
-- **`_parse_recommendation_response`**: Parse the LLM's response to extract:
-  - Product recommendations
-  - Explanations for each recommendation
-  - Confidence scores (if applicable)
-
-Focus on prompt engineering to get relevant, accurate recommendations with meaningful explanations.
-
-### 2. Error Handling
-
-Implement robust error handling throughout the API, including:
-- Invalid input validation
-- LLM API error handling
-- Graceful error responses
-
-## Testing Your Implementation
-
-A test script (`candidate_test.py`) is provided in the root directory to help you test your implementation. Run it after starting your Flask server:
-
-```
-python candidate_test.py
-```
-
-## Evaluation Criteria
-
-Your backend implementation will be evaluated based on:
-
-1. **Prompt Engineering Quality (50%)**
-   - Effectiveness of prompts in generating relevant recommendations
-   - Context handling and optimization
-   - Clarity and usefulness of recommendation explanations
-
-2. **API Design and Implementation (30%)**
-   - RESTful API design and implementation
-   - Error handling and edge cases
-   - Response time and efficiency
-
-3. **Code Quality (20%)**
-   - Code readability and organization
-   - Documentation and comments
-   - Error handling approaches
-
-## Tips for Success
-
-- **Focus on prompt engineering**: This is the most critical part of the assignment. Consider how to structure your prompts to get the best recommendations.
-- **Test with various scenarios**: Try different combinations of preferences and browsing history to ensure your implementation adapts well.
-- **Consider token limitations**: Be mindful of the LLM's context window limitations when designing your prompts.
-- **Document your approach**: In addition to code comments, consider adding a section in your project README explaining your prompt engineering strategy.
